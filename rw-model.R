@@ -1,4 +1,4 @@
-setwd("C:/Users/David/Documents/GitHub/affect-and-multidimensional-rl/")
+setwd("/")
 
 library(R.matlab)
 library(reshape2)
@@ -6,32 +6,29 @@ library(dplyr)
 library(tidyr)
 library(ggplot2)
 
-change to document 2
-another change 47
-another line of code
 # Import Data -------------------------------------------------------------
 
 Ss  <- list(
-  S1  <- readMat("C:/Users/David/Desktop/Data_Analysis_Scripts/Data_Analysis_Scripts/AM_MRI_analysis/AM_MRI_dataonly/AM_MRI_LEARN_3_2.mat")$rec.task,
-  S2  <- readMat("C:/Users/David/Desktop/Data_Analysis_Scripts/Data_Analysis_Scripts/AM_MRI_analysis/AM_MRI_dataonly/AM_MRI_LEARN_4_1.mat")$rec.task,
-  S3  <- readMat("C:/Users/David/Desktop/Data_Analysis_Scripts/Data_Analysis_Scripts/AM_MRI_analysis/AM_MRI_dataonly/AM_MRI_LEARN_5_1.mat")$rec.task,
-  S4  <- readMat("C:/Users/David/Desktop/Data_Analysis_Scripts/Data_Analysis_Scripts/AM_MRI_analysis/AM_MRI_dataonly/AM_MRI_LEARN_6_2.mat")$rec.task,
-  S5  <- readMat("C:/Users/David/Desktop/Data_Analysis_Scripts/Data_Analysis_Scripts/AM_MRI_analysis/AM_MRI_dataonly/AM_MRI_LEARN_7_2.mat")$rec.task,
-  S6  <- readMat("C:/Users/David/Desktop/Data_Analysis_Scripts/Data_Analysis_Scripts/AM_MRI_analysis/AM_MRI_dataonly/AM_MRI_LEARN_8_1.mat")$rec.task,
-  S7  <- readMat("C:/Users/David/Desktop/Data_Analysis_Scripts/Data_Analysis_Scripts/AM_MRI_analysis/AM_MRI_dataonly/AM_MRI_LEARN_9_2.mat")$rec.task,
-  S8  <- readMat("C:/Users/David/Desktop/Data_Analysis_Scripts/Data_Analysis_Scripts/AM_MRI_analysis/AM_MRI_dataonly/AM_MRI_LEARN_10_2.mat")$rec.task,
-  S9  <- readMat("C:/Users/David/Desktop/Data_Analysis_Scripts/Data_Analysis_Scripts/AM_MRI_analysis/AM_MRI_dataonly/AM_MRI_LEARN_11_1.mat")$rec.task,
-  S10 <- readMat("C:/Users/David/Desktop/Data_Analysis_Scripts/Data_Analysis_Scripts/AM_MRI_analysis/AM_MRI_dataonly/AM_MRI_LEARN_12_1.mat")$rec.task,
-  S11 <- readMat("C:/Users/David/Desktop/Data_Analysis_Scripts/Data_Analysis_Scripts/AM_MRI_analysis/AM_MRI_dataonly/AM_MRI_LEARN_13_2.mat")$rec.task,
-  S12 <- readMat("C:/Users/David/Desktop/Data_Analysis_Scripts/Data_Analysis_Scripts/AM_MRI_analysis/AM_MRI_dataonly/AM_MRI_LEARN_14_1.mat")$rec.task,
-  S13 <- readMat("C:/Users/David/Desktop/Data_Analysis_Scripts/Data_Analysis_Scripts/AM_MRI_analysis/AM_MRI_dataonly/AM_MRI_LEARN_15_1.mat")$rec.task,
-  S14 <- readMat("C:/Users/David/Desktop/Data_Analysis_Scripts/Data_Analysis_Scripts/AM_MRI_analysis/AM_MRI_dataonly/AM_MRI_LEARN_17_2.mat")$rec.task,
-  S15 <- readMat("C:/Users/David/Desktop/Data_Analysis_Scripts/Data_Analysis_Scripts/AM_MRI_analysis/AM_MRI_dataonly/AM_MRI_LEARN_18_1.mat")$rec.task,
-  S16 <- readMat("C:/Users/David/Desktop/Data_Analysis_Scripts/Data_Analysis_Scripts/AM_MRI_analysis/AM_MRI_dataonly/AM_MRI_LEARN_19_1.mat")$rec.task,
-  S17 <- readMat("C:/Users/David/Desktop/Data_Analysis_Scripts/Data_Analysis_Scripts/AM_MRI_analysis/AM_MRI_dataonly/AM_MRI_LEARN_20_2.mat")$rec.task,
-  S18 <- readMat("C:/Users/David/Desktop/Data_Analysis_Scripts/Data_Analysis_Scripts/AM_MRI_analysis/AM_MRI_dataonly/AM_MRI_LEARN_21_2.mat")$rec.task,
-  S19 <- readMat("C:/Users/David/Desktop/Data_Analysis_Scripts/Data_Analysis_Scripts/AM_MRI_analysis/AM_MRI_dataonly/AM_MRI_LEARN_22_1.mat")$rec.task,
-  S20 <- readMat("C:/Users/David/Desktop/Data_Analysis_Scripts/Data_Analysis_Scripts/AM_MRI_analysis/AM_MRI_dataonly/AM_MRI_LEARN_23_1.mat")$rec.task
+  S1  <- readMat("Data_Analysis_Scripts/Data_Analysis_Scripts/AM_MRI_analysis/AM_MRI_dataonly/AM_MRI_LEARN_3_2.mat")$rec.task,
+  S2  <- readMat("Data_Analysis_Scripts/Data_Analysis_Scripts/AM_MRI_analysis/AM_MRI_dataonly/AM_MRI_LEARN_4_1.mat")$rec.task,
+  S3  <- readMat("Data_Analysis_Scripts/Data_Analysis_Scripts/AM_MRI_analysis/AM_MRI_dataonly/AM_MRI_LEARN_5_1.mat")$rec.task,
+  S4  <- readMat("Data_Analysis_Scripts/Data_Analysis_Scripts/AM_MRI_analysis/AM_MRI_dataonly/AM_MRI_LEARN_6_2.mat")$rec.task,
+  S5  <- readMat("Data_Analysis_Scripts/Data_Analysis_Scripts/AM_MRI_analysis/AM_MRI_dataonly/AM_MRI_LEARN_7_2.mat")$rec.task,
+  S6  <- readMat("Data_Analysis_Scripts/Data_Analysis_Scripts/AM_MRI_analysis/AM_MRI_dataonly/AM_MRI_LEARN_8_1.mat")$rec.task,
+  S7  <- readMat("Data_Analysis_Scripts/Data_Analysis_Scripts/AM_MRI_analysis/AM_MRI_dataonly/AM_MRI_LEARN_9_2.mat")$rec.task,
+  S8  <- readMat("Data_Analysis_Scripts/Data_Analysis_Scripts/AM_MRI_analysis/AM_MRI_dataonly/AM_MRI_LEARN_10_2.mat")$rec.task,
+  S9  <- readMat("Data_Analysis_Scripts/Data_Analysis_Scripts/AM_MRI_analysis/AM_MRI_dataonly/AM_MRI_LEARN_11_1.mat")$rec.task,
+  S10 <- readMat("Data_Analysis_Scripts/Data_Analysis_Scripts/AM_MRI_analysis/AM_MRI_dataonly/AM_MRI_LEARN_12_1.mat")$rec.task,
+  S11 <- readMat("Data_Analysis_Scripts/Data_Analysis_Scripts/AM_MRI_analysis/AM_MRI_dataonly/AM_MRI_LEARN_13_2.mat")$rec.task,
+  S12 <- readMat("Data_Analysis_Scripts/Data_Analysis_Scripts/AM_MRI_analysis/AM_MRI_dataonly/AM_MRI_LEARN_14_1.mat")$rec.task,
+  S13 <- readMat("Data_Analysis_Scripts/Data_Analysis_Scripts/AM_MRI_analysis/AM_MRI_dataonly/AM_MRI_LEARN_15_1.mat")$rec.task,
+  S14 <- readMat("Data_Analysis_Scripts/Data_Analysis_Scripts/AM_MRI_analysis/AM_MRI_dataonly/AM_MRI_LEARN_17_2.mat")$rec.task,
+  S15 <- readMat("Data_Analysis_Scripts/Data_Analysis_Scripts/AM_MRI_analysis/AM_MRI_dataonly/AM_MRI_LEARN_18_1.mat")$rec.task,
+  S16 <- readMat("Data_Analysis_Scripts/Data_Analysis_Scripts/AM_MRI_analysis/AM_MRI_dataonly/AM_MRI_LEARN_19_1.mat")$rec.task,
+  S17 <- readMat("Data_Analysis_Scripts/Data_Analysis_Scripts/AM_MRI_analysis/AM_MRI_dataonly/AM_MRI_LEARN_20_2.mat")$rec.task,
+  S18 <- readMat("Data_Analysis_Scripts/Data_Analysis_Scripts/AM_MRI_analysis/AM_MRI_dataonly/AM_MRI_LEARN_21_2.mat")$rec.task,
+  S19 <- readMat("Data_Analysis_Scripts/Data_Analysis_Scripts/AM_MRI_analysis/AM_MRI_dataonly/AM_MRI_LEARN_22_1.mat")$rec.task,
+  S20 <- readMat("Data_Analysis_Scripts/Data_Analysis_Scripts/AM_MRI_analysis/AM_MRI_dataonly/AM_MRI_LEARN_23_1.mat")$rec.task
 )
 
 
@@ -50,87 +47,114 @@ f_beta <- function(alpha, mu){
 
 
 
-# Define Model (Pearce Hall)-------------------------------------------------------------------
+# Define Model (Rescorla Wagner)-------------------------------------------------------------------
 
 rw <- function(params){
-  Priors  <- c(params[4], (1-params[4]))
-  alpha   <- (((1-params[1])/(params[2]^2)) - (1/params[1]))*(params[1]^2)
-  beta    <- alpha*((1/params[1]) - 1)
-  A       <- rep(alpha, 4)
-  B       <- rep(beta, 4)
-  A.Pairs <- rep(alpha, 6)
-  B.Pairs <- rep(beta, 6)
-  
-  for (t in 1:length(data$group)){
-    
-    # Define Stimuli
-    X <- c(
-      as.integer(data[t, "Stim1"] == 1 | data[t, "Stim2"] == 1),
-      as.integer(data[t, "Stim1"] == 2 | data[t, "Stim2"] == 2),
-      as.integer(data[t, "Stim1"] == 3 | data[t, "Stim2"] == 3),
-      as.integer(data[t, "Stim1"] == 4 | data[t, "Stim2"] == 4))
-    X.Pairs <- c(
-      as.integer(data[t, "Stim1"] == 1 & data[t, "Stim2"] == 2),
-      as.integer(data[t, "Stim1"] == 1 & data[t, "Stim2"] == 3),
-      as.integer(data[t, "Stim1"] == 1 & data[t, "Stim2"] == 4),
-      as.integer(data[t, "Stim1"] == 2 & data[t, "Stim2"] == 3),
-      as.integer(data[t, "Stim1"] == 2 & data[t, "Stim2"] == 4),
-      as.integer(data[t, "Stim1"] == 3 & data[t, "Stim2"] == 4))
-    
-    # Compute expectations conditioned on each model
-    Cond.Exp <- c(((X%*%A)/sum(X)) / (((X%*%A)/sum(X)) + ((X%*%B)/sum(X))), X.Pairs%*%A.Pairs / (X.Pairs%*%A.Pairs + X.Pairs%*%B.Pairs))
-    Cond.Exp[is.na(Cond.Exp)] <- 0
-    
-    # Compute expectation given trial type (single vs. double stimulus)
-    v <- Cond.Exp[1]^as.integer(sum(X) == 1) * (Cond.Exp%*%Priors)^as.integer(sum(X) == 2)
-    
-    # Compute likelihood of usbject's choice
-    P.Choice <- (v^data[t, "choice"])*((1-v)^(1-data[t, "choice"]))
-    L[t] <- exp(params[3]*P.Choice) / (exp(params[3]*v) + exp(params[3]*(1-v)))
-    
-    # Update Alpha and Beta
-    A[which(X == 1)] <- A[which(X == 1)] + data[t, "choice"]*as.integer(sum(X) == 1) + (data[t, "choice"]/2)*as.integer(sum(X) == 2)
-    A.Pairs[which(X.Pairs == 1)] <- A.Pairs[which(X.Pairs == 1)] + data[t, "choice"]*as.integer(sum(X) == 2)
-    B[which(X == 1)] <- B[which(X == 1)] + (1-data[t, "choice"])*as.integer(sum(X) == 1) + ((1-data[t, "choice"])/2)*as.integer(sum(X) == 2)
-    B.Pairs[which(X.Pairs == 1)] <- B.Pairs[which(X.Pairs == 1)] + (1 - data[t, "choice"])*as.integer(sum(X) == 2)
-    
-    # Update Priors
-    JointLs <- (Cond.Exp^data[t, "choice"])*((1-Cond.Exp)^(1-data[t, "choice"]))*Priors
-    Priors <- Priors^as.integer(sum(X) == 1)*(JointLs / sum(JointLs))^as.integer(sum(X) == 2)
+  for(s in 1:length(freqs)){
+    for (t in 1:freqs[s]){
+      if(t == 1){
+        L[t, s] <- .5
+        V[t, s] <- .5 + params[1]*(f[t, s] - .5)
+      } else{
+        A       <- 1 / (1 + exp((2*V[t-1, s] - 1) * -params[2]))
+        L[t, s] <- ifelse(r[t, s] == 1, A, 1 - A)
+        V[t, s] <- V[t-1, s] + params[1]*(f[t, s] - V[t-1, s])
+      }
+    }
   }
   log.likelihoods <- log(L)
-  MAP <- -2 * sum(log.likelihoods, na.rm = TRUE)
-  return(MAP)
+  deviance <- -2 * sum(log.likelihoods, na.rm = TRUE)
+  return(deviance)
 }
 
 
-# Fit Model (Pearce Hall)----------------------------------------------
+# Fit Model (Rescorla Wagner)----------------------------------------------
 
 results <- matrix(NA, nrow=length(Ss), ncol=9,
-                  dimnames = list(
-                    c(), 
-                    c("Subject", "Threat_Alpha", "Threat_Beta", "Threat_LL", "Threat_Conv", "Safety_Alpha", "Safety_Beta", "Safety_LL", "Safety_Conv")))
+                  dimnames = list(c(), c("Subject",
+                                         "Threat_Alpha",
+                                         "Threat_Beta",
+                                         "Threat_LL",
+                                         "Threat_Conv",
+                                         "Safety_Alpha",
+                                         "Safety_Beta",
+                                         "Safety_LL",
+                                         "Safety_Conv")))
 
 for(s in 1:length(Ss)){
-  
-  # Prep Data
-  S <- Ss[[s]]
-  S <- as.data.frame(S)
+  S <- as.data.frame(Ss[[s]])
   S <- S[which(S$V1 != 3 & !grepl("NaN", S$V7)), c(1, 4, 6, 7)]
-  names <- c("group", "stim", "feedback", "choice")
-  colnames(S) <- names
+  colnames(S) <- c("group", "stim", "feedback", "choice")
   S$choice <- ifelse(S$choice == 1, 1, 0)
-  S$win <- ifelse(S$choice == S$feedback, 1, 0)
-  pairs <- c("1","2","3","4","1,2","1,3","1,4","2,3","2,4","3,4")
-  S$pairs <- sapply(S$stim, function(x) pairs[x])
-  S <- separate(S, "pairs", into = c("Stim1", "Stim2"), sep = ",")
-  S[which(is.na(S$Stim2)), "Stim2"] <- 99
-  
-  # Set Priors
+  stimOld <- as.integer(names(table(S$stim)))
+  stimNew <- 1:length(table(S$stim))
+  for(i in 1:length(stimOld)){
+    S$stim[which(S$stim == stimOld[i])] <- stimNew[i]
+  }
   for(g in 1:max(S$group)){
     data  <- S[which(S$group == g),]
-    L <- NA
-    rw.fits <- optim(par = c(.5, .2, 0, .5), fn = rw, hessian = T, lower = c(.01, .01, 0, 0), upper = c(.99, .2886751, 50, 1), method="L-BFGS-B")
+    stim  <- data$stim
+    freqs <- as.vector(table(data$stim))
+    V     <- matrix(NA, nrow = max(freqs), ncol = length(freqs))
+    L     <- matrix(NA, nrow = max(freqs), ncol = length(freqs))
+    f     <- matrix(NA, nrow = max(freqs), ncol = length(freqs))
+    r     <- matrix(NA, nrow = max(freqs), ncol = length(freqs))
+    for(j in 1:length(freqs)){
+      fData <- data$feedback[which(stim==j)]
+      rData <- data$choice[which(stim==j)]
+      if(length(fData) > 0){
+        f[1:length(fData), j] <- fData
+        r[1:length(rData), j] <- rData
+      }
+    }
+    
+    rw.fits <- optim(par = c(.1, 0), fn = rw, hessian = T, lower = c(0, 0), upper = c(1, 50), method="L-BFGS-B")
+    if(g==1){
+      results[s, 1] <- s
+      results[s, 2] <- rw.fits$par[1]
+      results[s, 3] <- rw.fits$par[2]
+      results[s, 4] <- rw.fits$value
+      results[s, 5] <- rw.fits$convergence
+    } else if(g==2){
+      results[s, 6] <- rw.fits$par[1]
+      results[s, 7] <- rw.fits$par[2]
+      results[s, 8] <- rw.fits$value
+      results[s, 9] <- rw.fits$convergence
+    }
+  }
+}
+
+
+# Simulated Prediction Errors ---------------------------------------------
+
+for(s in 1:length(Ss)){
+  S <- as.data.frame(Ss[[s]])
+  S <- S[, c(1, 4, 6, 7)]
+  colnames(S) <- c("group", "stim", "feedback", "choice")
+  S$choice <- ifelse(S$choice == 1, 1, 0)
+  stimOld <- as.integer(names(table(S$stim)))
+  stimNew <- 1:length(table(S$stim))
+  for(i in 1:length(stimOld)){
+    S$stim[which(S$stim == stimOld[i])] <- stimNew[i]
+  }
+  for(g in 1:max(S$group)){
+    data  <- S[which(S$group == g),]
+    stim  <- data$stim
+    freqs <- as.vector(table(data$stim))
+    V     <- matrix(NA, nrow = max(freqs), ncol = length(freqs))
+    L     <- matrix(NA, nrow = max(freqs), ncol = length(freqs))
+    f     <- matrix(NA, nrow = max(freqs), ncol = length(freqs))
+    r     <- matrix(NA, nrow = max(freqs), ncol = length(freqs))
+    for(j in 1:length(freqs)){
+      fData <- data$feedback[which(stim==j)]
+      rData <- data$choice[which(stim==j)]
+      if(length(fData) > 0){
+        f[1:length(fData), j] <- fData
+        r[1:length(rData), j] <- rData
+      }
+    }
+    
+    rw.fits <- optim(par = c(.1, 0), fn = rw, hessian = T, lower = c(0, 0), upper = c(1, 50), method="L-BFGS-B")
     if(g==1){
       results[s, 1] <- s
       results[s, 2] <- rw.fits$par[1]
@@ -148,40 +172,73 @@ for(s in 1:length(Ss)){
 
 
 
-names(RealOutput)[6:20] <- 1:15
-RealOutput$Simulated <- 0
-names(SimOutput)[6:20] <- 1:15
-SimOutput$Simulated <- 1
+# Simulation Model --------------------------------------------------------
+rw_PE <- function(params){
+  for(s in 1:length(freqs)){
+    for (t in 1:freqs[s]){
+      if(t == 1){
+        V[t, s] <- .5 + params[1]*(f[t, s] - .5)
+        Err[t, s] <- .5
+      } else{
+        V[t, s] <- V[t-1, s] + params[1]*(f[t, s] - V[t-1, s])
+        Err[t, s] <- f[t, s] - V[t-1, s]
+      }
+    }
+  }
+  return(Err)
+}
 
-Stack <- rbind(RealOutput, SimOutput)
+# Simulation Response -----------------------------------------------------
+SimOutput <- data.frame(Subject=integer(), Condition=integer(), Stimulus=integer())
+for(s in 1:length(Ss)){
+  S <- as.data.frame(Ss[[s]])
+  S <- S[which(S$V1 != 3), c(1, 4, 6, 7)]
+  names <- c("group", "stim", "feedback", "choice")
+  colnames(S) <- names
+  S$choice <- ifelse(S$choice == 1, 1, 0)
+  for(g in 1:max(S$group)){
+    data  <- S[which(S$group == g),]
+    stim  <- data$stim
+    freqs <- as.vector(table(data$stim))
+    V     <- matrix(NA, nrow = max(freqs), ncol = 10)
+    Err   <- matrix(NA, nrow = max(freqs), ncol = 10)
+    f     <- matrix(NA, nrow = max(freqs), ncol = 10)
+    for(j in 1:length(freqs)){
+      fData <- data$feedback[which(stim==j)]
+      if(length(fData) > 0){
+        f[1:length(fData), j] <- fData
+      }
+    }
+    col1  <- ifelse(g == 1, results[s, 2], results[s, 6])
+    SimData <- as.data.frame(rw_PE(col1))
+    SimData <- as.data.frame(cbind(1:10, rbind(t(SimData[1:10]))))
+    for(k in 1:10){
+      SimOutput[length(SimOutput$Stimulus) + 1, 1:(ncol(SimData) + 2)] <- cbind(s, g, SimData[k,])
+    }
+  }
+}
 
-SimLong <- melt(Stack,
-                id.vars = c("Simulated", "Condition", "Stimulus"),
-                measure.vars = 6:20,
-                variable.name = "Trial", value.name = "Sunny")
-SimLong$Condition <- as.factor(SimLong$Condition)
-levels(SimLong$Condition) <- c("Threat", "Safety")
-SimLong$Simulated <- as.factor(SimLong$Simulated)
-levels(SimLong$Simulated) <- c("Subject", "Model")
-SimLong$Stimulus <- as.factor(SimLong$Stimulus)
-levels(SimLong$Stimulus) <- c("Stim 1", "Stim 2", "Stim 3", "Stim 4", "Stim 5",
-                              "Stim 6", "Stim 7", "Stim 8", "Stim 9", "Stim 10")
+S <- as.data.frame(Ss[[s]])
+S <- S[, c(1, 4, 6, 7, 9, 11, 12)]
+colnames(S) <- c("Condition", "Stimulus", "Feedback", "Choice", "StimOnset", "FeedbackOnset", "TrialEndTime")
+S[which(S$Condition == 3), "TrialEndTime"] <- lead(S[which(S$Condition == 3), "TrialEndTime"], 3)
+S[which(S$Condition == 3), "FeedbackOnset"] <- S[which(S$Condition == 3), "StimOnset"]
+S$Keep <- NA
+S[which(S$Condition == 3), "Keep"] <- rep(c(1, 0, 0, 0), 12)
+S[which(S$Condition < 3), "Keep"] <- 1
+S <- S[which(S$Keep == 1), ]
+S$PredictionError <- NA
+S[which(S$Condition == 3), "PredictionError"] <- 0
+S$Duration <- S$TrialEndTime - S$FeedbackOnset
+for(i in 1:max(S$Stimulus, na.rm = T)){
+  for(j in 1:max(S$Condition)){
+    PE <- SimOutput[which(SimOutput$Stimulus == i & SimOutput$Condition == j), 4:18]
+    PE <- as.vector(unlist(PE[which(!is.na(PE))]))
+    S[which(S$Stimulus == i & S$Condition == j), "PredictionError"] <- PE
+  }
+}
 
-
-tiff("test2.tiff", units="in", width=8, height=3, res=300)
-ggplot(data=SLsim) +
-  #  theme_bw() +
-  theme(panel.spacing.x=unit(.5, "lines") , panel.spacing.y=unit(.5,"lines"))+
-  scale_color_brewer(palette = "Set1") +
-  theme(legend.title=element_blank()) +
-  geom_line(aes(x=Trial, y=Sunny), group = 1, size = .75, color = "blue") + 
-  geom_point(aes(x=Trial, y=Sunny2), size = 1) +
-  facet_grid(rows = vars(Condition), cols = vars(Stimulus)) +
-  scale_x_discrete(breaks = c(1, 5, 10, 15)) +
-  scale_y_continuous(breaks = c(0, .5, 1), limits = c(0,1))
-dev.off()
-
-
-curve(dbeta(x,81,219),col = "blue", xlab = "Batting Average", ylab = "Probability", xlim=c(0.1,0.4), ylim=c(0,25))
-par(new=TRUE)
-curve(dbeta(x,(10),(10)),col = "red", xlab = "Batting Average", ylab = "Probability", xlim=c(0.1,0.4),ylim=c(0,25))
+# Create 3 Col Text File --------------------------------------------------
+S6_L1 <- cbind(S$FeedbackOnset[1:72], S$Duration[1:72], S$PredictionError[1:72])
+write.table(S6_L1, file = "S6_L1_3Col.txt", sep = "\t",
+            row.names = F, col.names = F)
